@@ -6,6 +6,8 @@ game.resources = [
   {name: "metatiles24x24",  type:"image", src: "data/img/map/metatiles24x24.png"},
   // the main player spritesheet
   {name: "mover_right", type:"image", src: "data/img/sprite/mover_right.png"},
+  // the collector spritesheet
+  {name: "collector", type:"image", src: "data/img/sprite/collector.png"},
 
   /* Atlases
    * @example

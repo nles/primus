@@ -28,9 +28,9 @@
     <property name="spriteheight" value="32"/>
    </properties>
   </object>
-  <object name="collector" x="141.439" y="325.293" width="32" height="32">
+  <object name="collector" x="24.0389" y="488.015" width="32" height="32">
    <properties>
-    <property name="image" value="mover_right"/>
+    <property name="image" value="collector"/>
     <property name="spriteheight" value="32"/>
    </properties>
   </object>

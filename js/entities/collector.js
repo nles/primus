@@ -43,6 +43,8 @@ game.CollectorEntity = me.Entity.extend({
 
     // check & update the movement
     this.body.update(dt);
+    // update animation
+    this._super(me.Entity, 'update', [dt]);
     return true;
   }
 });
