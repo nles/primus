@@ -15,12 +15,18 @@ game.CollectorEntity = me.Entity.extend({
     this.body.setVelocity(5, 5);
 
     this.alwaysUpdate = true;
+    this.type = "collector";
   },
 
   /* -----
   update the position of the collector
   ------ */
   update: function(dt) {
+    // below could be used to set a fixed position
+    // (for example next to main character when triggering shoot...)
+    // this.pos.x = 0;
+    // this.pos.y = 200;
+    // this.updateBounds();
     if (me.input.isKeyPressed('shoot')) {
       // move the collector left-up or right-up
       // according to where player is moving

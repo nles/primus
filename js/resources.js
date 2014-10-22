@@ -8,6 +8,8 @@ game.resources = [
   {name: "mover_right", type:"image", src: "data/img/sprite/mover_right.png"},
   // the collector spritesheet
   {name: "collector", type:"image", src: "data/img/sprite/collector.png"},
+  // the faller spritesheet
+  {name: "faller", type:"image", src: "data/img/sprite/faller.png"},
 
   /* Atlases
    * @example

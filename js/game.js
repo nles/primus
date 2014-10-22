@@ -44,6 +44,8 @@ var game = {
     me.pool.register("mainPlayer", game.PlayerEntity);
     // register our collector entity in the object pool
     me.pool.register("collector", game.CollectorEntity);
+    // register our faller entity in the object pool
+    // me.pool.register("faller", game.FallerEntity);
 
     // enable the keyboard
     me.input.bindKey(me.input.KEY.LEFT, "left");
