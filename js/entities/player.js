@@ -6,6 +6,10 @@ game.PlayerEntity = me.Entity.extend({
   constructor
   ------ */
   init: function(x, y, settings) {
+    settings.width = h.blockWidth;
+    settings.height = h.blockHeight;
+    settings.spritewidth = h.blockWidth;
+    settings.spriteheight = h.blockHeight;
     // call the constructor
     this._super(me.Entity, 'init', [x, y, settings]);
     // set the default horizontal & vertical speed (accel vector)
@@ -14,32 +18,47 @@ game.PlayerEntity = me.Entity.extend({
     me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
     // ensure the player is updated even when outside of the viewport
     this.alwaysUpdate = true;
+
+    this.allowMovingLeft = true
+    this.allowMovingRight = true
+    this.movingRight = false;
+    this.movingLeft = false;
+    this.shooting = false;
   },
 
   /* -----
   update the players position
   ------ */
   update: function(dt) {
-    if (me.input.isKeyPressed('left')) {
-      this.movingLeft = true
-      this.movingRight = false
+    var _t = this
+    // check collisions
+    var res = me.game.world.collide(this);
+    var inCrackFromLeft = false;
+    var inCrackFromRight = false;
+    var hasCollector = false;
+
+    this.body.vel.x = 0;
+    var leftPressed = me.input.isKeyPressed('left');
+    var rightPressed = me.input.isKeyPressed('right');
+    if(leftPressed && !rightPressed && this.allowMovingLeft) {
+      this.movingLeft = true;
+      this.movingRight = false;
       // flip the sprite on horizontal axis
       this.flipX(true);
       // update the entity velocity
       this.body.vel.x -= this.body.accel.x * me.timer.tick;
-    } else if (me.input.isKeyPressed('right')) {
+    }
+    if (rightPressed && !leftPressed && this.allowMovingRight) {
       this.movingLeft = false
       this.movingRight = true
       // unflip the sprite
       this.flipX(false);
       // update the entity velocity
       this.body.vel.x += this.body.accel.x * me.timer.tick;
-    } else {
-      this.body.vel.x = 0;
     }
-    // console.log(this.movingRight)
 
-    /* method for jumping disabled for now
+    // jumping disabled
+    /*
     if (me.input.isKeyPressed('jump')) {
       // make sure we are not already jumping or falling
       if (!this.body.jumping && !this.body.falling) {
@@ -52,15 +71,12 @@ game.PlayerEntity = me.Entity.extend({
     }
     */
 
-    if (me.input.isKeyPressed('jump')) {
-      // make sure we are not already jumping or falling
-      if (!this.body.shooting) {
-        // set current vel to the maximum defined value
-        // gravity will then do the rest
-        this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
-        // set the shooting flag
-        this.body.shooting = true;
-      }
+    if(this.shooting) {
+      this.allowMovingRight = false;
+      this.allowMovingLeft = false;
+    } else {
+      this.allowMovingRight = true;
+      this.allowMovingLeft = true;
     }
 
     // check & update player movement

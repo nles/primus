@@ -13,20 +13,18 @@ game.PlayScreen = me.ScreenObject.extend({
     this.HUD = new game.HUD.Container();
     me.game.world.addChild(this.HUD);
 
-    // after 1 second...
-    setTimeout(function(){
-      // ...start randomly spawning fallers every 2 second
-      var floorgrid = helpers.floorgrid()
-      setInterval(function(){
-        if(!me.state.isPaused()){
-          // select a random floor tile x coordinate
-          var floorIndex = helpers.random(0,floorgrid.length-1)
-          var newX = floorgrid[floorIndex]
-          var faller = new game.FallerEntity(newX-(24), 100, {});
-          me.game.world.addChild(faller,5);
-        }
-      },2000)
-    },1000)
+    // start randomly spawning fallers every 2 second
+    var floorgrid = h.floorgrid()
+    var fallInterval = setInterval(function(){
+      if(!me.state.isPaused()){
+        // select a random floor tile x coordinate
+        var floorIndex = h.random(0,floorgrid.length-1)
+        var newX = floorgrid[floorIndex]
+        var faller = new game.FallerEntity(newX-(24), 100, {});
+        me.game.world.addChild(faller,5);
+      }
+      //clearInterval(fallInterval);
+    },2000)
 
   },
 

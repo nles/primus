@@ -50,7 +50,7 @@ var game = {
     // enable the keyboard
     me.input.bindKey(me.input.KEY.LEFT, "left");
     me.input.bindKey(me.input.KEY.RIGHT, "right");
-    // me.input.bindKey(me.input.KEY.X, "jump", true);
+    me.input.bindKey(me.input.KEY.C, "jump", true);
     me.input.bindKey(me.input.KEY.X, "shoot");
 
     // Start the game.
@@ -62,5 +62,11 @@ var game = {
 // save references to objects on global (game) scope
 var levelLoaded = function(){
   game.mainPlayer = me.game.world.getChildByName("mainPlayer")[0];
+  game.collector = me.game.world.getChildByName("collector")[0];
 }
 me.game.onLevelLoaded = this.levelLoaded.bind(this);
+
+me.event.subscribe(me.event.KEYUP, function (action, keyCode) {
+  // Checking unbound keys
+  if (keyCode == me.input.KEY.X) game.collector.requireShootKeyRelease = false;
+});

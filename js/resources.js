@@ -10,6 +10,9 @@ game.resources = [
   {name: "collector", type:"image", src: "data/img/sprite/collector.png"},
   // the faller spritesheet
   {name: "faller", type:"image", src: "data/img/sprite/faller.png"},
+  // the floor_crack spritesheet
+  {name: "floor_crack", type:"image", src: "data/img/sprite/floor_crack.png"},
+
 
   /* Atlases
    * @example

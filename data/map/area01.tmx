@@ -22,10 +22,9 @@
   </data>
  </layer>
  <objectgroup name="Main">
-  <object name="mainPlayer" x="24" y="541.311" width="32" height="32">
+  <object name="mainPlayer" x="24" y="541.311" width="24" height="24">
    <properties>
     <property name="image" value="mover_right"/>
-    <property name="spriteheight" value="32"/>
    </properties>
   </object>
   <object name="collector" x="24.0389" y="488.015" width="32" height="32">
