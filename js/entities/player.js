@@ -6,10 +6,10 @@ game.PlayerEntity = me.Entity.extend({
   constructor
   ------ */
   init: function(x, y, settings) {
-    settings.width = h.blockWidth;
-    settings.height = h.blockHeight;
-    settings.spritewidth = h.blockWidth;
-    settings.spriteheight = h.blockHeight;
+    settings.width = h.blockWidth*2;
+    settings.height = h.blockHeight*2;
+    settings.spritewidth = h.blockWidth*2;
+    settings.spriteheight = h.blockHeight*2;
     // call the constructor
     this._super(me.Entity, 'init', [x, y, settings]);
     // set the default horizontal & vertical speed (accel vector)
@@ -44,7 +44,7 @@ game.PlayerEntity = me.Entity.extend({
       this.movingLeft = true;
       this.movingRight = false;
       // flip the sprite on horizontal axis
-      this.flipX(true);
+      this.flipX(false);
       // update the entity velocity
       this.body.vel.x -= this.body.accel.x * me.timer.tick;
     }
@@ -52,7 +52,7 @@ game.PlayerEntity = me.Entity.extend({
       this.movingLeft = false
       this.movingRight = true
       // unflip the sprite
-      this.flipX(false);
+      this.flipX(true);
       // update the entity velocity
       this.body.vel.x += this.body.accel.x * me.timer.tick;
     }
