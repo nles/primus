@@ -16,8 +16,8 @@ game.HUD.Container = me.Container.extend({
     this.z = Infinity;
     // give a name
     this.name = "HUD";
-    // add our child score object at the top left corner
-    this.addChild(new game.HUD.ScoreItem(5, 5));
+    // add our child score object at the somewhere
+    this.addChild(new game.HUD.ScoreItem(0, 0));
   }
 });
 
@@ -32,6 +32,9 @@ game.HUD.ScoreItem = me.Renderable.extend({
     // call the parent constructor
     // (size does not matter here)
     this._super(me.Renderable, 'init', [x, y, 10, 10]);
+    // add font
+    this.font = new me.BitmapFont("font", 16);
+    this.font.set("right");
     // local copy of the global score
     this.score = -1;
     // make sure we use screen coordinates
@@ -56,6 +59,7 @@ game.HUD.ScoreItem = me.Renderable.extend({
    */
   draw : function (context) {
     // draw it baby !
+    this.font.draw (context, game.data.score, 480, 0);
   }
 
 });

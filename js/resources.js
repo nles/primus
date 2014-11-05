@@ -14,7 +14,11 @@ game.resources = [
   {name: "faller_fixall", type:"image", src: "data/img/sprite/faller_fixall.png"},
   // the floor_crack spritesheet
   {name: "floor_crack", type:"image", src: "data/img/sprite/floor_crack.png"},
-
+  // TODO
+  // main player walking animation
+  // {name: "main_char_walk", type:"image", src: "data/img/sprite/main_char_walk.png"},
+  // font file for the HUD
+  {name: "font", type:"image", src: "data/img/font/16x16_font.png"},
 
   /* Atlases
    * @example

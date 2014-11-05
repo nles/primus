@@ -69,8 +69,13 @@ game.FallerEntity = me.Entity.extend({
         // remove when hit with a visible collector
         if(res.obj.renderable.getOpacity() != 0){
           // add to score on each catch
+          // TODO: add points depending on height when colliding with the collector
+          // if(this.pos.y < 300) game.data.score += 1200;
+            // else if (this.pos.y < 380) game.data.score += 400;
+            // else if (this.pos.y < 460) game.data.score += 200;
+            // else game.data.score += 100;
+          // }
           game.data.score+= 10;
-          // console.log(game.data.score)
           // make floor available if we collect the faller
           h.availableTiles[this.floorTileIndex] = 1;
           // fix a broken floor tile closest to the player
