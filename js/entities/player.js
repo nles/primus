@@ -6,10 +6,10 @@ game.PlayerEntity = me.Entity.extend({
   constructor
   ------ */
   init: function(x, y, settings) {
-    settings.width = h.blockWidth*2;
-    settings.height = h.blockHeight*2;
-    settings.spritewidth = h.blockWidth*2;
-    settings.spriteheight = h.blockHeight*2;
+    settings.width = h.blockWidth;
+    settings.height = h.blockHeight;
+    settings.spritewidth = h.blockWidth;
+    settings.spriteheight = h.blockHeight;
     // call the constructor
     this._super(me.Entity, 'init', [x, y, settings]);
     // set the default horizontal & vertical speed (accel vector)
