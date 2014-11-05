@@ -8,8 +8,10 @@ game.resources = [
   {name: "mover_right", type:"image", src: "data/img/sprite/mover_right.png"},
   // the collector spritesheet
   {name: "collector", type:"image", src: "data/img/sprite/collector.png"},
-  // the faller spritesheet
+  // the faller spritesheets
   {name: "faller", type:"image", src: "data/img/sprite/faller.png"},
+  {name: "faller_fixone", type:"image", src: "data/img/sprite/faller_fixone.png"},
+  {name: "faller_fixall", type:"image", src: "data/img/sprite/faller_fixall.png"},
   // the floor_crack spritesheet
   {name: "floor_crack", type:"image", src: "data/img/sprite/floor_crack.png"},
 
@@ -20,7 +22,7 @@ game.resources = [
    */
 
   /* Maps. */
-  {name: "area01", type: "tmx", src: "data/map/area01.tmx"},
+  {name: "area01", type: "tmx", src: "data/map/area01.json"},
 
   /* Background music.
    * @example
