@@ -16,7 +16,7 @@ game.HUD.Container = me.Container.extend({
     this.z = Infinity;
     // give a name
     this.name = "HUD";
-    // add our child score object at the somewhere
+    // add our child score object
     this.addChild(new game.HUD.ScoreItem(0, 0));
   }
 });
@@ -59,7 +59,7 @@ game.HUD.ScoreItem = me.Renderable.extend({
    */
   draw : function (context) {
     // draw it baby !
-    this.font.draw (context, game.data.score, 480, 0);
+    this.font.draw (context, game.data.score, 470, 10);
   }
 
 });

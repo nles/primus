@@ -66,6 +66,7 @@ game.FallerEntity = me.Entity.extend({
       // me.game.world.removeChild(this);
       if (res.obj.type == "collector" && !this.collected) {
         this.collected = true;
+        res.obj.forceReturn = true;
         // remove when hit with a visible collector
         if(res.obj.renderable.getOpacity() != 0){
           // add to score on each catch

@@ -5,7 +5,7 @@ game.resources = [
   // metatiles
   {name: "metatiles24x24",  type:"image", src: "data/img/map/metatiles24x24.png"},
   // the main player spritesheet
-  {name: "mover_right", type:"image", src: "data/img/sprite/mover_right.png"},
+  {name: "primus_sequence", type:"image", src: "data/img/sprite/primus_sequence.png"},
   // the collector spritesheet
   {name: "collector", type:"image", src: "data/img/sprite/collector.png"},
   // the faller spritesheets
@@ -14,9 +14,7 @@ game.resources = [
   {name: "faller_fixall", type:"image", src: "data/img/sprite/faller_fixall.png"},
   // the floor_crack spritesheet
   {name: "floor_crack", type:"image", src: "data/img/sprite/floor_crack.png"},
-  // TODO
-  // main player walking animation
-  // {name: "main_char_walk", type:"image", src: "data/img/sprite/main_char_walk.png"},
+  {name: "area01_bkg0", type:"image", src: "data/img/background.png"},
   // font file for the HUD
   {name: "font", type:"image", src: "data/img/font/16x16_font.png"},
 
