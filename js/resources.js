@@ -18,6 +18,11 @@ game.resources = [
   {name: "main_char_walk", type:"image", src: "data/img/sprite/main_char_walk.png"},
   // font file for the HUD
   {name: "font", type:"image", src: "data/img/font/16x16_font.png"},
+  // a button of some sort
+  {name: "button", type:"image", src: "data/img/title/button.png"},
+  // background picture for the title screen
+  {name: "background", type:"image", src: "data/img/title/bg.png"},
+
 	
   /* Atlases
    * @example

@@ -18,7 +18,8 @@ game.PlayerEntity = me.Entity.extend({
     me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
     // ensure the player is updated even when outside of the viewport
     this.alwaysUpdate = true;
-
+    this.renderable.addAnimation("walk",  [0, 1, 2, 3, 4], 6);
+    this.renderable.setCurrentAnimation("walk");
     this.allowMovingLeft = true
     this.allowMovingRight = true
     this.movingRight = false;

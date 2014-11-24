@@ -37,7 +37,7 @@ var game = {
 
   // Run on game resources loaded.
   "loaded" : function () {
-    // me.state.set(me.state.MENU, new game.TitleScreen());
+    me.state.set(me.state.MENU, new game.TitleScreen());
     me.state.set(me.state.PLAY, new game.PlayScreen());
 
     // register our player entity in the object pool
@@ -54,7 +54,7 @@ var game = {
     me.input.bindKey(me.input.KEY.X, "shoot");
 
     // Start the game.
-    me.state.change(me.state.PLAY);
+    me.state.change(me.state.MENU);
   }
 
 };
