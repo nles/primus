@@ -3,8 +3,10 @@ game.TitleScreen = me.ScreenObject.extend({
   *  action to perform on state change
   */
   onResetEvent: function() {
+    // play music
+    me.audio.playTrack("primusstartmenu");
 
-    // add background image (doesn't currently exist)
+    // add background image
     me.game.world.addChild(
             new me.Sprite (
                 0,0,
@@ -18,10 +20,10 @@ game.TitleScreen = me.ScreenObject.extend({
 	init:function (x, y){
     	    var settings = {}
       	    settings.image = "button";
-      	    settings.spritewidth = 100;
-      	    settings.spriteheight = 50;
+      	    settings.spritewidth = 140;
+      	    settings.spriteheight = 30;
       	    // super constructor
-      	    this._super(me.GUI_Object, "init", [480/2-50, 380/2-25, settings]);
+      	    this._super(me.GUI_Object, "init", [480/2-70, 255, settings]);
       	    // define the object z order
       	    this.z = 4;
    	},
@@ -43,6 +45,6 @@ game.TitleScreen = me.ScreenObject.extend({
   * action to perform when leaving this screen (state change)
   */
   onDestroyEvent: function() {
-    ; // TODO
+    me.audio.stopTrack(); // TODO
   }
 });

@@ -39,6 +39,9 @@ game.FallerEntity = me.Entity.extend({
   },
 
   update: function(dt) {
+    // destroy object to reduce memory use, if it falls too far
+    if(this.pos.y > 500) me.game.world.removeChild(this);
+
     this.body.vel.y = 0.5;
 
     // check & update movement
@@ -48,6 +51,8 @@ game.FallerEntity = me.Entity.extend({
     if(!this.body.falling){
       var fallSpotX = this.pos.x
       var horizontalTileNum = fallSpotX/h.blockWidth
+      //play the cracking sound effect
+      me.audio.play("cracking");
       var crack = new game.FloorCrackEntity(fallSpotX, (h.blockHeight*h.verticalBlocks)-(h.blockHeight*2), {});
       h.floorCracks[horizontalTileNum] = crack;
       me.game.world.addChild(crack,5);
@@ -66,14 +71,19 @@ game.FallerEntity = me.Entity.extend({
       // me.game.world.removeChild(this);
       if (res.obj.type == "collector" && !this.collected) {
         this.collected = true;
+        res.obj.forceReturn = true;
         // remove when hit with a visible collector
         if(res.obj.renderable.getOpacity() != 0){
           // add score on each catch depending on height
-	  if(this.pos.y < 300) game.data.score += 120;
-	  else if (this.pos.y < 380) game.data.score += 40;
-	  else if (this.pos.y < 460) game.data.score += 20;
+	  //play collection sound
+	  me.audio.play("shootingobjects");
+	  if(this.pos.y < 60) game.data.score += 120;
+	  else if (this.pos.y < 120) game.data.score += 40;
+	  else if (this.pos.y < 200) game.data.score += 20;
 	  else game.data.score += 10;
           // console.log(game.data.score)
+          // add to score on each catch
+          //game.data.score = this.pos.y;
           // make floor available if we collect the faller
           h.availableTiles[this.floorTileIndex] = 1;
           // fix a broken floor tile closest to the player
@@ -93,6 +103,7 @@ game.FallerEntity = me.Entity.extend({
               },200);
             }
           }
+
           me.game.world.removeChild(this);
         }
       }

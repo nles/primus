@@ -10,7 +10,7 @@ var game = {
   // Run on page load.
   "onload" : function () {
     // Initialize the video.
-    if (!me.video.init("screen",  me.video.CANVAS, 480, 380, true, 'auto')) {
+    if (!me.video.init("screen",  me.video.CANVAS, 480, 384, true, 'auto')) {
       alert("Your browser does not support HTML5 canvas.");
       return;
     }
@@ -23,7 +23,7 @@ var game = {
     }
 
     // Initialize the audio.
-    me.audio.init("mp3,ogg");
+    me.audio.init("mp3, ogg");
 
     // Set a callback to run when loading is complete.
     me.loader.onload = this.loaded.bind(this);
@@ -55,6 +55,7 @@ var game = {
 
     // Start the game.
     me.state.change(me.state.MENU);
+
   }
 
 };

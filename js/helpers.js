@@ -1,7 +1,7 @@
 h = {
   blockWidth: 24,
   blockHeight: 24,
-  verticalBlocks: 25,
+  verticalBlocks: 16,
   horizontalBlocks: 20
 }
 
@@ -37,14 +37,16 @@ h['floorCracks'] = new Object();
 
 h['blockMovementOnFloor'] = function(tilenum){
   var collisionLayer = me.game.currentLevel.getLayerByName("collision");
-  collisionLayer.layerData[tilenum][23] = collisionLayer.layerData[tilenum][24];
-  collisionLayer.layerData[tilenum][24] = null;
+  lastVerticalBlockIndex = h.verticalBlocks-1
+  collisionLayer.layerData[tilenum][lastVerticalBlockIndex-1] = collisionLayer.layerData[tilenum][lastVerticalBlockIndex];
+  collisionLayer.layerData[tilenum][lastVerticalBlockIndex] = null;
 }
 
 h['allowMovementOnFloor'] = function(tilenum){
   var collisionLayer = me.game.currentLevel.getLayerByName("collision");
-  collisionLayer.layerData[tilenum][24] = collisionLayer.layerData[tilenum][23];
-  collisionLayer.layerData[tilenum][23] = null;
+  lastVerticalBlockIndex = h.verticalBlocks-1
+  collisionLayer.layerData[tilenum][lastVerticalBlockIndex] = collisionLayer.layerData[tilenum][lastVerticalBlockIndex-1];
+  collisionLayer.layerData[tilenum][lastVerticalBlockIndex-1] = null;
 }
 
 h['fixClosestFloorTile'] = function(){

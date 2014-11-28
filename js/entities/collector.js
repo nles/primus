@@ -15,7 +15,7 @@ game.CollectorEntity = me.Entity.extend({
     this.alwaysUpdate = true;
 
     this.body.gravity = false;
-    this.hitAWall = false;
+    this.forceReturn = false;
     this.requireShootKeyRelease = false;
     this.shotsFired = 0;
   },
@@ -30,7 +30,7 @@ game.CollectorEntity = me.Entity.extend({
     var shootkeyPressed = me.input.isKeyPressed('shoot');
     var maxX = h.xBound-(36)
     var maxY = h.yBound-(h.blockHeight*2)
-    if (shootkeyPressed && !this.hitAWall && !this.requireShootKeyRelease){
+    if (shootkeyPressed && !this.forceReturn && !this.requireShootKeyRelease){
       if(!player.shooting){
         this.pos.x = player.pos.x;
         this.pos.y = player.pos.y;
@@ -49,7 +49,7 @@ game.CollectorEntity = me.Entity.extend({
         this.pos.y -= 10;
       }
       // back home when we hit a wall
-      if(this.pos.x >= maxX || this.pos.x < 0 || this.pos.y <= 0) this.hitAWall = true;
+      if(this.pos.x >= maxX || this.pos.x < 0 || this.pos.y <= 0) this.forceReturn = true;
 
     } else {
       var collectorIsBack = false;
@@ -64,7 +64,7 @@ game.CollectorEntity = me.Entity.extend({
       }
       if(collectorIsBack){
         this.renderable.setOpacity(0);
-        this.hitAWall = false;
+        this.forceReturn = false;
         if(shootkeyPressed) this.requireShootKeyRelease = true;
         player.shooting = false;
         collectorIsBack = false;

@@ -7,9 +7,9 @@ game.PlayerEntity = me.Entity.extend({
   ------ */
   init: function(x, y, settings) {
     settings.width = h.blockWidth;
-    settings.height = h.blockHeight;
-    settings.spritewidth = h.blockWidth;
-    settings.spriteheight = h.blockHeight;
+    settings.height = 96;
+    settings.spritewidth = 96;
+    settings.spriteheight = 96;
     // call the constructor
     this._super(me.Entity, 'init', [x, y, settings]);
     // set the default horizontal & vertical speed (accel vector)
@@ -18,7 +18,7 @@ game.PlayerEntity = me.Entity.extend({
     me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
     // ensure the player is updated even when outside of the viewport
     this.alwaysUpdate = true;
-    this.renderable.addAnimation("walk",  [0, 1, 2, 3, 4], 6);
+    this.renderable.addAnimation("walk",  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 100);
     this.renderable.setCurrentAnimation("walk");
     this.allowMovingLeft = true
     this.allowMovingRight = true
@@ -45,7 +45,7 @@ game.PlayerEntity = me.Entity.extend({
       this.movingLeft = true;
       this.movingRight = false;
       // flip the sprite on horizontal axis
-      this.flipX(false);
+      this.flipX(true);
       // update the entity velocity
       this.body.vel.x -= this.body.accel.x * me.timer.tick;
     }
@@ -53,7 +53,7 @@ game.PlayerEntity = me.Entity.extend({
       this.movingLeft = false
       this.movingRight = true
       // unflip the sprite
-      this.flipX(true);
+      this.flipX(false);
       // update the entity velocity
       this.body.vel.x += this.body.accel.x * me.timer.tick;
     }

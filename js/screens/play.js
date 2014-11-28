@@ -3,8 +3,16 @@ game.PlayScreen = me.ScreenObject.extend({
   * action to perform on state change
   */
   onResetEvent: function() {
+    // play music
+    me.audio.playTrack("primus1");
+
     // load a level
     me.levelDirector.loadLevel("area01");
+
+    // set the background
+    //var bg = new me.Sprite (0, 0, me.loader.getImage("area01_bkg0"));
+    var bg = new me.ImageLayer("BG", 480, 384, 'area01_bkg0', 100)
+    me.game.world.addChild(bg, 2);
 
     // reset the score
     game.data.score = 0;
@@ -38,7 +46,7 @@ game.PlayScreen = me.ScreenObject.extend({
           if(fixAllIfZero == 0) fallerSettings.fixall = true;
         }
         // create a new faller accordingly
-        var faller = new game.FallerEntity(newX-(24), 100, fallerSettings);
+        var faller = new game.FallerEntity(newX-(24), -24, fallerSettings);
         faller.floorTileIndex = indexOnFloor;
         me.game.world.addChild(faller,5);
         // make tile unavailable (this reverts if the faller gets collected)
