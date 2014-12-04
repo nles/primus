@@ -1,10 +1,10 @@
 /*-------------------
- a faller entity
--------------------- */
+  a faller entity
+  -------------------- */
 game.FallerEntity = me.Entity.extend({
   /* -----
-  constructor
-  ------ */
+     constructor
+     ------ */
   init: function(x, y, settings) {
     this.fixall = false;
     this.fixone = false;
@@ -69,19 +69,25 @@ game.FallerEntity = me.Entity.extend({
     if (res) {
       // remove on collision
       // me.game.world.removeChild(this);
+      // Player dying from a faller hit
+      if (res.obj.type == "player" && !this.collected) {
+        h.resetRound();
+        me.audio.stopTrack();
+        me.state.change(me.state.MENU);
+      }
+      // Player collecting the faller
       if (res.obj.type == "collector" && !this.collected) {
         this.collected = true;
         res.obj.forceReturn = true;
         // remove when hit with a visible collector
         if(res.obj.renderable.getOpacity() != 0){
+          // play collection sound
+          me.audio.play("shootingobjects");
           // add score on each catch depending on height
-	  //play collection sound
-	  me.audio.play("shootingobjects");
-	  if(this.pos.y < 60) game.data.score += 120;
-	  else if (this.pos.y < 120) game.data.score += 40;
-	  else if (this.pos.y < 200) game.data.score += 20;
-	  else game.data.score += 10;
-          // console.log(game.data.score)
+          if(this.pos.y < 60) game.data.score += 120;
+          else if (this.pos.y < 120) game.data.score += 40;
+          else if (this.pos.y < 200) game.data.score += 20;
+          else game.data.score += 10;
           // add to score on each catch
           //game.data.score = this.pos.y;
           // make floor available if we collect the faller
@@ -94,7 +100,7 @@ game.FallerEntity = me.Entity.extend({
             for(var i=0;i<h.brokenTiles.length;i++){
               var brokenCount = 0;
               for(i=0;i<h.brokenTiles.length;i++)
-                if(h.brokenTiles[i] == 1) brokenCount++;
+              if(h.brokenTiles[i] == 1) brokenCount++;
               var fixedCount = 0;
               var fixerInterval = setInterval(function(){
                 h.fixClosestFloorTile();

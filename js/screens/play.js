@@ -58,7 +58,7 @@ game.PlayScreen = me.ScreenObject.extend({
     }
 
     // start randomly spawning fallers every 2 second
-    var fallTimer = function(){
+    var fall = function(){
       // speed up the game according to score
       initFall();
       // calculate next fall start
@@ -81,10 +81,10 @@ game.PlayScreen = me.ScreenObject.extend({
       // cap the min speed at 300
       if(nextCallAt <= 300) nextCallAt = 300;
       // console.log("fall initiated with next coming after "+nextCallAt);
-      setTimeout(fallTimer,nextCallAt);
+      h.fallTimer = setTimeout(fall,nextCallAt);
     };
 
-    fallTimer();
+    fall();
   },
 
 

@@ -55,9 +55,7 @@ var game = {
 
     // Start the game.
     me.state.change(me.state.MENU);
-
   }
-
 };
 
 // save references to objects on global (game) scope

@@ -2,12 +2,12 @@ h = {
   blockWidth: 24,
   blockHeight: 24,
   verticalBlocks: 16,
-  horizontalBlocks: 20
+  horizontalBlocks: 20,
+  fallTimer: null
 }
 
 h['yBound'] = h.verticalBlocks * h.blockHeight,
 h['xBound'] = h.horizontalBlocks * h.blockWidth,
-
 
 h['initFloor'] = function(){
   floor = new Array();
@@ -72,7 +72,6 @@ h['fixClosestFloorTile'] = function(){
     // mark tile unbroken && available
     h.brokenTiles[closestFloorTileNum] = 0;
     h.availableTiles[closestFloorTileNum] = 1;
-    console.log("FIXED: "+closestFloorTileNum);
   }
 }
 
@@ -93,4 +92,13 @@ h['closest'] = function(arr, num){
       }
   }
   return curr;
+}
+
+h['resetRound'] = function(){
+  clearTimeout(h.fallTimer);
+  // fix every tile
+  for(i = 0; i < h.brokenTiles.length; i++){
+    h.brokenTiles[i] = 0;
+    h.availableTiles[i] = 1;
+  }
 }

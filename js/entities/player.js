@@ -25,6 +25,7 @@ game.PlayerEntity = me.Entity.extend({
     this.movingRight = false;
     this.movingLeft = false;
     this.shooting = false;
+    this.type = "player";
   },
 
   /* -----
