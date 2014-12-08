@@ -73,7 +73,8 @@ game.FallerEntity = me.Entity.extend({
       if (res.obj.type == "player" && !this.collected) {
         h.resetRound();
         me.audio.stopTrack();
-        me.state.change(me.state.MENU);
+	me.audio.play("death");
+        me.state.change(me.state.GAMEOVER);
       }
       // Player collecting the faller
       if (res.obj.type == "collector" && !this.collected) {

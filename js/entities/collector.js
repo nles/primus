@@ -44,9 +44,11 @@ game.CollectorEntity = me.Entity.extend({
       if(player.movingRight){
         this.pos.x += 10;
         this.pos.y -= 10;
+	this.flipX(true);
       } else {
         this.pos.x -= 10;
         this.pos.y -= 10;
+	this.flipX(false);
       }
       // back home when we hit a wall
       if(this.pos.x >= maxX || this.pos.x < 0 || this.pos.y <= 0) this.forceReturn = true;
@@ -56,10 +58,12 @@ game.CollectorEntity = me.Entity.extend({
       if(player.movingRight){
         this.pos.x -= 30;
         this.pos.y += 30;
+	this.flipX(false);
         if(this.pos.x < player.pos.x) collectorIsBack = true;
       } else {
         this.pos.x += 30;
         this.pos.y += 30;
+	this.flipX(true);
         if(this.pos.x > player.pos.x) collectorIsBack = true;
       }
       if(collectorIsBack){

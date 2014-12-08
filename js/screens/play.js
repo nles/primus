@@ -4,7 +4,7 @@ game.PlayScreen = me.ScreenObject.extend({
   */
   onResetEvent: function() {
     // play music
-    me.audio.playTrack("primus1");
+    me.audio.playTrack(game.data.music);
 
     // load a level
     me.levelDirector.loadLevel("area01");

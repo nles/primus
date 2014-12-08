@@ -4,7 +4,11 @@ var game = {
   // an object where to store game information
   data : {
     // score
-    score : 0
+    score : 0,
+    settings : false,
+    gameover : false,
+    volume : 1.0,
+    music : "primus1"
   },
 
   // Run on page load.
@@ -38,7 +42,9 @@ var game = {
   // Run on game resources loaded.
   "loaded" : function () {
     me.state.set(me.state.MENU, new game.TitleScreen());
+    me.state.set(me.state.SETTINGS, new game.SettingScreen());
     me.state.set(me.state.PLAY, new game.PlayScreen());
+    me.state.set(me.state.GAMEOVER, new game.GameOver());
 
     // register our player entity in the object pool
     me.pool.register("mainPlayer", game.PlayerEntity);
@@ -54,6 +60,7 @@ var game = {
     me.input.bindKey(me.input.KEY.X, "shoot");
 
     // Start the game.
+    me.audio.setVolume(1);
     me.state.change(me.state.MENU);
   }
 };
