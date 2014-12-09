@@ -1,6 +1,5 @@
 game.resources = [
-
-  /* Graphics. */
+  // graphics
   {name: "sewer_tileset", type:"image", src: "data/img/map/sewer_tileset.png"},
   // metatiles
   {name: "metatiles24x24",  type:"image", src: "data/img/map/metatiles24x24.png"},
@@ -30,33 +29,22 @@ game.resources = [
   {name: "start", type:"image", src: "data/img/title/startbutton.png"},
   {name: "menu", type:"image", src: "data/img/title/menu.png"},
   {name: "play", type:"image", src: "data/img/title/play.png"},
-	
+
   {name: "area01_bkg0", type:"image", src: "data/img/background.png"},
   {name: "gameoverbg", type:"image", src: "data/img/title/black.png"},
   // font file for the HUD
   {name: "font", type:"image", src: "data/img/font/16x16_font.png"},
-
-  /* Atlases
-   * @example
-   * {name: "example_tps", type: "tps", src: "data/img/example_tps.json"},
-   */
-
-  /* Maps. */
+  // ui images for controls
+  {name: "dpad-left", type:"image", src: "data/img/sprite/dpad-left.png"},
+  {name: "dpad-right", type:"image", src: "data/img/sprite/dpad-right.png"},
+  {name: "button", type:"image", src: "data/img/sprite/button.png"},
+  // maps
   {name: "area01", type: "tmx", src: "data/map/area01.json"},
-
-  /* Background music.
-   * @example
-   * {name: "example_bgm", type: "audio", src: "data/bgm/"},
-   */
+  // background music
   {name: "primus1", type: "audio", src: "data/bgm/"},
   {name: "primus2", type: "audio", src: "data/bgm/"},
   {name: "primusstartmenu", type: "audio", src: "data/bgm/"},
-  
-  /* Sound effects.
-   * @example
-   * {name: "example_sfx", type: "audio", src: "data/sfx/"}
-   */
-
+  //// sound effects
   {name: "cracking", type: "audio", src: "data/sfx/"},
   {name: "death", type: "audio", src: "data/sfx/"},
   {name: "hittingobject", type: "audio", src: "data/sfx/"},

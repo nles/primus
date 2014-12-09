@@ -64,7 +64,6 @@ game.HUD.ScoreItem = me.Renderable.extend({
    * draw the score
    */
   draw : function (context) {
-    // draw it baby !
     this.font.draw (context, game.data.score, 470, 10);
   }
 });

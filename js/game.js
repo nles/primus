@@ -14,7 +14,7 @@ var game = {
   // Run on page load.
   "onload" : function () {
     // Initialize the video.
-    if (!me.video.init("screen",  me.video.CANVAS, 480, 384, true, 'auto')) {
+    if (!me.video.init("screen",  me.video.CANVAS, 480, 384, true, 'auto', false)) {
       alert("Your browser does not support HTML5 canvas.");
       return;
     }
@@ -27,7 +27,7 @@ var game = {
     }
 
     // Initialize the audio.
-    me.audio.init("mp3, ogg");
+    me.audio.init("ogg");
 
     // Set a callback to run when loading is complete.
     me.loader.onload = this.loaded.bind(this);

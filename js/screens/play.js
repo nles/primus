@@ -10,7 +10,7 @@ game.PlayScreen = me.ScreenObject.extend({
     me.levelDirector.loadLevel("area01");
 
     // set the background
-    //var bg = new me.Sprite (0, 0, me.loader.getImage("area01_bkg0"));
+    var bg = new me.Sprite (0, 0, me.loader.getImage("area01_bkg0"));
     var bg = new me.ImageLayer("BG", 480, 384, 'area01_bkg0', 100)
     me.game.world.addChild(bg, 2);
 
@@ -20,6 +20,84 @@ game.PlayScreen = me.ScreenObject.extend({
     // add our HUD to the game world
     this.HUD = new game.HUD.Container();
     me.game.world.addChild(this.HUD);
+
+    // // // //
+    // // // //
+    // MOBILE BUTTONS (should be moved somewhere else...)
+    // refactor:
+
+    me.game.world.addChild(new (me.GUI_Object.extend ({
+      // constructor
+      init:function (x, y){
+        var settings = {}
+        settings.image = "dpad-left";
+        settings.spritewidth = 105;
+        settings.spriteheight = 89;
+        settings.width = 105;
+        // super constructor
+        this._super(me.GUI_Object, "init", [10, 290, settings]);
+        this.z = 4;
+        this.alpha = 0.3;
+      },
+      onClick: function(){
+        me.input.triggerKeyEvent(me.input.KEY.LEFT, true);
+        me.input.triggerKeyEvent(me.input.KEY.RIGHT, false);
+        me.input.triggerKeyEvent(me.input.KEY.X, false);
+      },
+      onRelease: function(){
+        me.input.triggerKeyEvent(me.input.KEY.LEFT, false);
+      }
+    })));
+
+    me.game.world.addChild(new (me.GUI_Object.extend ({
+      // constructor
+      init:function (x, y){
+        var settings = {}
+        settings.image = "dpad-right";
+        settings.spritewidth = 105;
+        settings.spriteheight = 89;
+        settings.width = 105;
+        // super constructor
+        this._super(me.GUI_Object, "init", [125, 290, settings]);
+        this.z = 4;
+        this.alpha = 0.3;
+      },
+      onClick: function(){
+        me.input.triggerKeyEvent(me.input.KEY.RIGHT, true);
+        me.input.triggerKeyEvent(me.input.KEY.LEFT, false);
+        me.input.triggerKeyEvent(me.input.KEY.X, false);
+      },
+      onRelease: function(){
+        me.input.triggerKeyEvent(me.input.KEY.RIGHT, false);
+      }
+    })));
+
+    me.game.world.addChild(new (me.GUI_Object.extend ({
+      // constructor
+      init:function (x, y){
+        var settings = {}
+        settings.image = "button";
+        settings.spritewidth = 98;
+        settings.spriteheight = 98;
+        settings.width = 105;
+        // super constructor
+        this._super(me.GUI_Object, "init", [375, 290, settings]);
+        this.z = 4;
+        this.alpha = 0.3;
+      },
+      onClick: function(){
+        me.input.triggerKeyEvent(me.input.KEY.X, true);
+        me.input.triggerKeyEvent(me.input.KEY.RIGHT, false);
+        me.input.triggerKeyEvent(me.input.KEY.LEFT, false);
+      },
+      onRelease: function(){
+        me.input.triggerKeyEvent(me.input.KEY.X, false);
+      }
+    })));
+
+    // // // //
+    // // // //
+    // START THE FALLERS
 
     var initFall = function(){
       if(!me.state.isPaused()){
