@@ -14,7 +14,8 @@ var game = {
   // Run on page load.
   "onload" : function () {
     // Initialize the video.
-    if (!me.video.init("screen",  me.video.CANVAS, 480, 384, true, 'auto', false)) {
+    var keepAspectRatio = (me.device.isMobile || navigator.isCocoonJS) ? false : true;
+    if (!me.video.init("screen",  me.video.CANVAS, 480, 384, true, 'auto', keepAspectRatio)) {
       alert("Your browser does not support HTML5 canvas.");
       return;
     }
@@ -50,8 +51,6 @@ var game = {
     me.pool.register("mainPlayer", game.PlayerEntity);
     // register our collector entity in the object pool
     me.pool.register("collector", game.CollectorEntity);
-    // register our faller entity in the object pool
-    // me.pool.register("faller", game.FallerEntity);
 
     // enable the keyboard
     me.input.bindKey(me.input.KEY.LEFT, "left");
@@ -68,7 +67,9 @@ var game = {
 // save references to objects on global (game) scope
 var levelLoaded = function(){
   game.mainPlayer = me.game.world.getChildByName("mainPlayer")[0];
+  game.mainPlayer.z = 6;
   game.collector = me.game.world.getChildByName("collector")[0];
+  game.collector.z = 6;
 }
 me.game.onLevelLoaded = this.levelLoaded.bind(this);
 

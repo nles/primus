@@ -1,12 +1,12 @@
 /*-------------------
- a collector entity
- (thing that collects the stuff falling down)
--------------------- */
+  a collector entity
+  (thing that collects the stuff falling down)
+  -------------------- */
 game.CollectorEntity = me.Entity.extend({
 
   /* -----
-  constructor
-  ------ */
+     constructor
+     ------ */
   init: function(x, y, settings) {
     // call the constructor
     this._super(me.Entity, 'init', [x, y, settings]);
@@ -21,8 +21,8 @@ game.CollectorEntity = me.Entity.extend({
   },
 
   /* -----
-  update the position of the collector
-  ------ */
+     update the position of the collector
+     ------ */
   update: function(dt) {
     // below could be used to set a fixed position
     // (for example next to main character when triggering shoot...)
@@ -41,30 +41,30 @@ game.CollectorEntity = me.Entity.extend({
       }
       // move the collector left-up or right-up
       // according to where player is moving
-      if(player.movingRight){
-        this.pos.x += 10;
-        this.pos.y -= 10;
-	this.flipX(true);
-      } else {
+      if(player.movingLeft){
         this.pos.x -= 10;
         this.pos.y -= 10;
-	this.flipX(false);
+        this.flipX(false);
+      } else {
+        this.pos.x += 10;
+        this.pos.y -= 10;
+        this.flipX(true);
       }
       // back home when we hit a wall
       if(this.pos.x >= maxX || this.pos.x < 0 || this.pos.y <= 0) this.forceReturn = true;
 
     } else {
       var collectorIsBack = false;
-      if(player.movingRight){
-        this.pos.x -= 30;
-        this.pos.y += 30;
-	this.flipX(false);
-        if(this.pos.x < player.pos.x) collectorIsBack = true;
-      } else {
+      if(player.movingLeft){
         this.pos.x += 30;
         this.pos.y += 30;
-	this.flipX(true);
+        this.flipX(true);
         if(this.pos.x > player.pos.x) collectorIsBack = true;
+      } else {
+        this.pos.x -= 30;
+        this.pos.y += 30;
+        this.flipX(false);
+        if(this.pos.x < player.pos.x) collectorIsBack = true;
       }
       if(collectorIsBack){
         this.renderable.setOpacity(0);
@@ -92,9 +92,9 @@ game.CollectorEntity = me.Entity.extend({
 // tweening to invisible before destroy...
 // (new me.Tween(this.renderable))
 // .to({
-    // alpha : 0
+// alpha : 0
 // }, 500)
 // .onComplete((function () {
-    // me.game.world.removeChild(this);
+// me.game.world.removeChild(this);
 // }).bind(this))
 // .start();

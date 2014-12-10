@@ -20,21 +20,20 @@ game.GameOver = me.ScreenObject.extend({
     me.game.world.addChild(new (me.GUI_Object.extend ({
       // constructor
       init:function (x, y){
-	var settings = {}
-	settings.image = "menu";
-	settings.spritewidth = 140;
-	settings.spriteheight = 30;
-	//super constructor
-	this._super(me.GUI_Object, "init", [480/2-70, 325, settings]);
-	//define object z order
-	this.z = 4;
+        var settings = {}
+        settings.image = "menu";
+        settings.spritewidth = 140;
+        settings.spriteheight = 30;
+        //super constructor
+        this._super(me.GUI_Object, "init", [480/2-70, 325, settings]);
+        this.z = 4;
       },
 
       onClick:function (event){
-	// go to the settings screen
-	game.data.settings = false;
-	me.state.change(me.state.MENU);
-	return true;
+        // go to the settings screen
+        game.data.settings = false;
+        me.state.change(me.state.MENU);
+        return true;
       }
     })));
 

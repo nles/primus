@@ -59,8 +59,6 @@ game.PlayerEntity = me.Entity.extend({
       this.body.vel.x += this.body.accel.x * me.timer.tick;
     }
 
-    // jumping disabled
-    /*
     if (me.input.isKeyPressed('jump')) {
       // make sure we are not already jumping or falling
       if (!this.body.jumping && !this.body.falling) {
@@ -71,7 +69,6 @@ game.PlayerEntity = me.Entity.extend({
         this.body.jumping = true;
       }
     }
-    */
 
     if(this.shooting) {
       this.allowMovingRight = false;
@@ -79,6 +76,14 @@ game.PlayerEntity = me.Entity.extend({
     } else {
       this.allowMovingRight = true;
       this.allowMovingLeft = true;
+    }
+
+    // die from falling through the ice
+    if(this.pos.y > 300){
+      h.resetRound();
+      me.audio.stopTrack();
+      me.audio.play("death");
+      me.state.change(me.state.GAMEOVER);
     }
 
     // check & update player movement
@@ -90,6 +95,7 @@ game.PlayerEntity = me.Entity.extend({
       this._super(me.Entity, 'update', [dt]);
       return true;
     }
+
 
     // else inform the engine we did not perform
     // any update (e.g. position, animation)

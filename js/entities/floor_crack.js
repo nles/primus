@@ -20,11 +20,6 @@ game.FloorCrackEntity = me.Entity.extend({
 
     this.type = "floor_crack";
     this.body.gravity = false;
-
-    this.body.onCollision = function(res){
-      if(res.a.name == "mainplayer"){
-      }
-    }
   }
 
 });

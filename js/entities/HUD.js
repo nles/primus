@@ -128,6 +128,6 @@ game.HUD.GameOverItem = me.Renderable.extend({
   draw : function (context) {
     this.font.draw (context, "GAME OVER", 240, 384/2-100);
     this.font.draw (context, "FINAL SCORE", 240, 384/2-40);
-    this.font.draw (context, game.data.score, 240, 384/2-15);
+    this.font.draw (context, game.data.score, 240, 384/2);
   }
 });

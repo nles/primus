@@ -8,6 +8,7 @@ game.TitleScreen = me.ScreenObject.extend({
     if(me.audio.getCurrentTrack() !== "primusstartmenu"){
       me.audio.playTrack("primusstartmenu");
     }
+
     // add background image
     me.game.world.addChild(new me.Sprite(0, 0, me.loader.getImage('background')),1);
 
@@ -41,7 +42,7 @@ game.TitleScreen = me.ScreenObject.extend({
         settings.spritewidth = 140;
         settings.spriteheight = 30;
         // super constructor
-        this._super(me.GUI_Object, "init", [480/2-70, 260, settings]);
+        this._super(me.GUI_Object, "init", [480/2-70, 275, settings]);
         this.z = 4;
       },
 
